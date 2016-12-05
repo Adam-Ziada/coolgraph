@@ -8,7 +8,19 @@ heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis",
   legendlab = "response\\n variable")
 }
 \arguments{
-\item{legendlab}{}
+\item{data}{is a summarized data frame with 2 factor variables and 1 continous variable}
+
+\item{x1}{is a column of a data frame of the form data$variable name, that must contain summarized factor data.}
+
+\item{x2}{is a column of a data frame of the form data$variable name, that must contain summarized factor data.}
+
+\item{y}{is a column of a data frame of the form data$variable name, that must contain summarized (double, integer, or numeric) data.}
+
+\item{xlab}{is the x-axis label - must be character data.}
+
+\item{ylab}{is the y-axis label - must be character data.}
+
+\item{legendlab}{is the legend label - must be character data.}
 }
 \description{
 Title
