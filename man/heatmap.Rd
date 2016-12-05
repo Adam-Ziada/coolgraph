@@ -2,7 +2,7 @@
 % Please edit documentation in R/heatmap.R
 \name{heatmap}
 \alias{heatmap}
-\title{Title}
+\title{heatmap}
 \usage{
 heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis",
   legendlab = "response\\n variable")
@@ -23,6 +23,18 @@ heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis",
 \item{legendlab}{is the legend label - must be character data.}
 }
 \description{
-Title
+Creates a
+}
+\examples{
+#' my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
+#'                                gear = as.factor(mtcars$gear),
+#'                                carb = as.factor(mtcars$carb),
+#'                                    am = as.factor(mtcars$am),
+#'                                    vs = as.factor(mtcars$vs))
+#'   heat_data <- dplyr::ungroup(
+#'          	dplyr::summarise(dplyr::group_by(my_cars, am, cyl),
+#' 									 average_mpg = mean(mpg)))
+#' heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg,
+#'                                      "cylinders", "am", "mpg")
 }
 
