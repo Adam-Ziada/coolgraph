@@ -1,5 +1,19 @@
 
 
+#' Title
+#'
+#' @param data
+#' @param x1
+#' @param x2
+#' @param y
+#' @param xlab
+#' @param ylab
+#' @param legendlab
+#'
+#' @return
+#' @export
+#'
+#' @examples
 heatmap <- function(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis", legendlab = "response\n variable") {
 	if(!is.data.frame(data)) {
 		stop('the first variable (data) must be a data frame, you have entered ', class(data)[1], " data.")
