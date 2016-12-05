@@ -2,7 +2,7 @@
 
 #' heatmap
 #'
-#' Creates a
+#' Creates of two catigorical variables, and 1 continous variable.
 #'
 #'
 #'
