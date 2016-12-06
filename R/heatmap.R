@@ -36,13 +36,13 @@ heatmap <- function(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis", legendlab
 		stop('the first variable (data) must be a data frame, you have entered ', class(data)[1], " data.")
 	}
 	if(!is.factor(x1)) {
-		stop('the first variable (data) must be a factor, you have entered ', class(x1)[1], " data.")
+		stop('the second variable (x1) must be a factor, you have entered ', class(x1)[1], " data.")
 	}
 	if(!is.factor(x2)) {
-		stop('the first variable (data) must be a factor, you have entered ', class(x2)[1], " data.")
+		stop('the third variable (x2) must be a factor, you have entered ', class(x2)[1], " data.")
 	}
 	if(!(is.numeric(y) | is.double(y) | is.integer(y))) {
-		stop('the first variable (data) must be a numeric or dbl or integer, you have entered ', class(y)[1], " data.")
+		stop('the fourth variable (y) must be a numeric or dbl or integer, you have entered ', class(y)[1], " data.")
 	}
 	if(!(is.character(xlab))) {
 		stop('the x-axis lable (xlab) must be a character, you have entered ', class(xlab)[1], " data.")

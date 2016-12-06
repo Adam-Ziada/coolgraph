@@ -23,7 +23,7 @@ heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis",
 \item{legendlab}{is the legend label - must be character data.}
 }
 \description{
-Creates a
+Creates of two catigorical variables, and 1 continous variable.
 }
 \examples{
 #' my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),

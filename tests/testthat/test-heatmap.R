@@ -1,4 +1,4 @@
-context("Binding factors")
+context("Make a Heatmap")
 
 testthat::test_that("make a heatmap from mtcars", {
 	my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
@@ -21,13 +21,12 @@ b <-	ggplot2::ggplot(heat_data) +
 
 
 c <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg")
-d <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", 1)
-e <- heatmap(heat_data, heat_data, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg")
-f <- heatmap(heat_data$cyl, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg")
-g <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$am, "cylinders", "am", "mpg")
-h <- heatmap(heat_data, heat_data$cyl, heat_data$average_mpg, heat_data$average_mpg, "cylinders", "am", "mpg")
-i <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", heat_data$am, "mpg")
-z <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg")
+#d <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", 1)
+#e <- heatmap(heat_data, heat_data, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg")
+#f <- heatmap(heat_data$cyl, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg")
+#g <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$am, "cylinders", "am", "mpg")
+#h <- heatmap(heat_data, heat_data$cyl, heat_data$average_mpg, heat_data$average_mpg, "cylinders", "am", "mpg")
+#i <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", heat_data$am, "mpg")
 
 
 
@@ -40,11 +39,11 @@ z <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cyl
 	testthat::expect_equal(b$scales, c$scales)
 	testthat::expect_equal(b$layers, c$layers)
 
-	testthat::expect_error(d, regexp = NULL)
-	testthat::expect_error(e, regexp = NULL)
-	testthat::expect_error(f, regexp = NULL)
-	testthat::expect_error(g, regexp = NULL)
-	testthat::expect_error(h, regexp = NULL)
-	testthat::expect_error(h, regexp = NULL)
+	testthat::expect_error(heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", 1), regexp = NULL)
+	testthat::expect_error(heatmap(heat_data, heat_data, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg"), regexp = NULL)
+	testthat::expect_error(heatmap(heat_data$cyl, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg"), regexp = NULL)
+	testthat::expect_error(heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$am, "cylinders", "am", "mpg"), regexp = NULL)
+	testthat::expect_error(heatmap(heat_data, heat_data$cyl, heat_data$average_mpg, heat_data$average_mpg, "cylinders", "am", "mpg"), regexp = NULL)
+	testthat::expect_error(heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", heat_data$am, "mpg"), regexp = NULL)
 
 })
