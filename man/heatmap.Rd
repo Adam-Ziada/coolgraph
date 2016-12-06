@@ -23,7 +23,7 @@ heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis",
 \item{legendlab}{is the legend label - must be character data.}
 }
 \description{
-Creates of two catigorical variables, and 1 continous variable.
+To use this function you must pre-prepare a table or else it won't. The term used is the summarize the data table, which means for your two catigorical variables, you should have only one row in your table for each combination of catigorical variables, with one y output for each row. For example, if you want to see the effect of sex (male vs female) and smoking status (yes vs no), and you want to measure mutation rate accross 100 samples, you would prepare a table with 3 columns and 4 rows. Note that we have averaged the mutation for each of the 4 combinations of sex and smoking.
 }
 \examples{
 #' my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),

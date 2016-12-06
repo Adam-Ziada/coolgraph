@@ -2,9 +2,9 @@
 % Please edit documentation in R/facet2D.R
 \name{facet2D}
 \alias{facet2D}
-\title{Title}
+\title{facet2D}
 \usage{
-facet2D(data, c1, c2, f1, f2, xlab, ylab)
+facet2D(data, c1, c2, f1, f2, xlab = "x-axis", ylab = "y-axis")
 }
 \arguments{
 \item{data}{is a data frame}
@@ -22,7 +22,7 @@ facet2D(data, c1, c2, f1, f2, xlab, ylab)
 \item{ylab}{is the y-axis label - must be character data.}
 }
 \description{
-Title
+This function was inspired by my interested in showing 2 categorical variables in the same set of graphs as 2 continous variables, ploting a grid of faceted plots where each column represents different values of one categorical variable, and each row represents different values of the other categorical variable. Each plot would show one of the continous variables on the x axis, with the other continous variable on the y-axis. However at this moment the function is not working properly.
 }
 \examples{
 #'my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),

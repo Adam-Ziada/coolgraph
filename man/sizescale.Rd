@@ -23,11 +23,12 @@ sizescale(data, x1, y1, scale, xlab = "x-axis", ylab = "y-axis",
 \item{legendlab}{is the legend label - must be character data.}
 }
 \description{
-description
+This function is directly inspired by my lab's request to plot 3 continous variables on one graph, as such this function plots one variable on the x axis, one variable on the y axis, and maps on variable to the size of each point, which is drawn as an outline to reduce cluttering of the data.
 }
 \examples{
 #'sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "wt", "mpg", "hp")
 #'sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "weight", "mpg", "horse power")
 #'sizescale(mtcars, mtcars$disp, mtcars$mpg, mtcars$hp, "size", "mpg", "horse power")
+#'sizescale(mtcars, mtcars$disp, mtcars$mpg, mtcars$hp)
 }
 

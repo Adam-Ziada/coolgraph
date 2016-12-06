@@ -1,4 +1,6 @@
-#' Title
+#' facet2D
+#'
+#' This function was inspired by my interested in showing 2 categorical variables in the same set of graphs as 2 continous variables, ploting a grid of faceted plots where each column represents different values of one categorical variable, and each row represents different values of the other categorical variable. Each plot would show one of the continous variables on the x axis, with the other continous variable on the y-axis. However at this moment the function is not working properly.
 #'
 #' @param data is a data frame
 #' @param c1 is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data
@@ -23,10 +25,10 @@ facet2D <- function(data, c1, c2, f1, f2, xlab = "x-axis", ylab = "y-axis") {
 	if(!is.data.frame(data)) {
 		stop('the first variable (data) must be a data frame, you have entered ', class(data)[1], " data.")
 	}
-	if(!is.factor(f1)) {
+	if(!(is.factor(f1) | is.character(f1))) {
 		stop('the fourth variable (f1) must be a factor, you have entered ', class(f1)[1], " data.")
 	}
-	if(!is.factor(f2)) {
+	if(!(is.factor(f2) | is.character(f2))) {
 		stop('the fith variable (f2) must be a factor, you have entered ', class(f2)[1], " data.")
 	}
 	if(!(is.numeric(c1) | is.double(c1) | is.integer(c1))) {

@@ -1,7 +1,7 @@
 
 #' sizescale
 #'
-#' description
+#' This function is directly inspired by my lab's request to plot 3 continous variables on one graph, as such this function plots one variable on the x axis, one variable on the y axis, and maps on variable to the size of each point, which is drawn as an outline to reduce cluttering of the data.
 #'
 #' @param data is a data frame
 #' @param x1 is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data
@@ -27,8 +27,8 @@ sizescale <- function(data, x1, y1, scale, xlab = "x-axis", ylab = "y-axis", leg
 	if(!(is.numeric(x1) | is.double(x1) | is.integer(x1))) {
 		stop('the second variable (x1) must be a numeric or dbl or integer, you have entered ', class(x1)[1], " data.")
 	}
-	if(!(is.numeric(x2) | is.double(x2) | is.integer(x2))) {
-		stop('the third variable (x2) must be a numeric or dbl or integer, you have entered ', class(x2)[1], " data.")
+	if(!(is.numeric(y1) | is.double(y1) | is.integer(y1))) {
+		stop('the third variable (y1) must be a numeric or dbl or integer, you have entered ', class(y1)[1], " data.")
 	}
 	if(!(is.numeric(scale) | is.double(scale) | is.integer(scale))) {
 		stop('the fourth variable (scale) must be a numeric or dbl or integer, you have entered ', class(scale)[1], " data.")

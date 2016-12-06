@@ -25,12 +25,6 @@ testthat::test_that("Make a graph with point size scaling", {
 	b1 <- sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "weight", "mpg", "horse power")
 	c1 <- sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp)
 	d1 <- sizescale(mtcars, mtcars$disp, mtcars$mpg, mtcars$hp, "Displacement", "mpg", "horse power")
-	#d <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", 1)
-	#e <- heatmap(heat_data, heat_data, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg")
-	#f <- heatmap(heat_data$cyl, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", "am", "mpg")
-	#g <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$am, "cylinders", "am", "mpg")
-	#h <- heatmap(heat_data, heat_data$cyl, heat_data$average_mpg, heat_data$average_mpg, "cylinders", "am", "mpg")
-	#i <- heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg, "cylinders", heat_data$am, "mpg")
 
 
 
@@ -39,7 +33,7 @@ testthat::test_that("Make a graph with point size scaling", {
 	testthat::expect_silent(b1)
 	testthat::expect_is(b, "ggplot")
 	testthat::expect_is(b1, "ggplot")
-	testthat::expect_equal(b$data, b1$data)
+	 testthat::expect_equal(b$data, b1$data)
 	testthat::expect_equal(b$labels, b1$labels)
 	testthat::expect_equal(b$coordinates, b1$coordinates)
 	testthat::expect_equal(b$scales, b1$scales)
