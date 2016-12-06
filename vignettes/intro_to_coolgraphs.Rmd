@@ -72,4 +72,11 @@ heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis", legendlab = "response
 
 ```
 
+![__heat map__](https://raw.githubusercontent.com/Adam-Ziada/coolgraph/master/Rplot.png)
+
+
+
+
+
+
 
