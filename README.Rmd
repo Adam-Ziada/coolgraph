@@ -14,7 +14,17 @@ This package has been inspired by my research group and there desire to make awe
 
 To use this function you must pre-prepare a table or else it won't. The term used in this pkg is the "summarized data table", which means for your two catigorical variables, you should have only one row in your table for each combination of catigorical variables, with one y output for each row. For example, if you want to see the effect of sex (male vs female) and smoking status (yes vs no), and you want to measure mutation rate accross 100 samples, you would prepare a table with 3 columns and 4 rows. Note that we have averaged the mutation for each of the 4 combinations of sex and smoking.
 
+
+|   sex    | smoking  | average mutation rate  |
+|----------|----------|------------------------|
+| "male"   | "no"     |        15.5            |
+| "male"   | "yes"    |        12.3            |
+| "female" | "no"     |        18.8            |
+| "female" | "yes"    |        15.6            |
+
+
 ###Function structure
+
 heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis", legendlab = "response\n variable")
 
 * data is a summarized data frame with 2 factor variables and 1 continous variable
@@ -25,16 +35,25 @@ heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis", legendlab = "response
 * ylab is the y-axis label - must be character data.
 * legendlab is the legend label - must be character data.
 
-###Example:
+###Example
+
+In this package we use the mtcars data set a lot, and below I'm going to walk through and example of how to use the heatmap function. First we need to fix the mtcars data, as several of the categorical variables are encoded as factors.
 
 ```{r}
+
 	my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
 													 gear = as.factor(mtcars$gear),
 													 carb = as.factor(mtcars$carb),
 													 am = as.factor(mtcars$am),
 													 vs = as.factor(mtcars$vs))
 
+str(my_cars)
+```
 
+
+Now we want to group the data by number of cylinders (cyl) and weather they are automatic or manual (am), and take the average of the miles per gallon, which will be our response varialbe in this case.
+
+```{r}
 	heat_data <- dplyr::ungroup(
 		dplyr::summarise(dplyr::group_by(my_cars, am, cyl),
 										 average_mpg = mean(mpg)))
@@ -43,6 +62,9 @@ heat_data
 
 
 ```
+
+
+Now this data can be feed into our function heatmap()
 
 
 ```{r}
@@ -61,7 +83,7 @@ Note that for some reason this call will not work in rmarkdown, however entering
 
 This function was inspired by my interested in showing 2 categorical variables in the same set of graphs as 2 continous variables, ploting a grid of faceted plots where each column represents different values of one categorical variable, and each row represents different values of the other categorical variable. Each plot would show one of the continous variables on the x axis, with the other continous variable on the y-axis. However at this moment the function is not working properly. I will go into that below.
 
-###Function structure
+###Function Structure
 
 facet2D(data, c1, c2, f1, f2, xlab = "x-axis", ylab = "y-axis")
 
@@ -73,16 +95,9 @@ facet2D(data, c1, c2, f1, f2, xlab = "x-axis", ylab = "y-axis")
 * xlab is the x-axis label - must be character data.
 * ylab is the y-axis label - must be character data.
 
-###Example
+###Trouble shooting
 
-```{r}
-
-coolgraph::facet2D(my_cars, my_cars$wt, my_cars$mpg, "am", "cyl", "weight", "miles per gallon")
-
-```
-
-Note that all tests for this function are currently disabled until it is working properlly. Below is the plot that this function should be producing. As you can see, it technically facet's the data and plots mpg vs wt, but something seems to be going wrong in that the points are distorted. This function will hopefully be fixed at a future data.
-
+In this graph, I want to compare the mpg or miles per gallon a car gets based on it's weight, accross cars with different numbers of cylinders and automatic drive vs manual drive. Below is the guts of what the function does.
 ```{r}
 
 b <- ggplot2::ggplot(my_cars, ggplot2::aes(wt, mpg)) +
@@ -95,6 +110,15 @@ b
 
 ```
 
+Unfortunatly when we make pretty much an identical call to our function, something about the facet_wrap distorts the data.
+
+```{r}
+
+coolgraph::facet2D(my_cars, my_cars$wt, my_cars$mpg, "am", "cyl", "weight", "miles per gallon")
+
+```
+
+Note that all tests for this function are currently disabled until it is working properlly. As you can see, it technically facet's the data and plots mpg vs wt, but something seems to be going wrong in that the points are distorted. This function will hopefully be fixed at a future data.
 
 ##sizescale()
 
@@ -114,14 +138,24 @@ sizescale(data, x1, y1, scale, xlab = "x-axis", ylab = "y-axis", legendlab = "le
 
 ###Example
 
+This function will work pretty much directly on any dataframe, and requires minimal prep, however if for some reason your continous variables aren't in a numerical formate (dbl, int, numeric) then you will have to convert them to said numeric formate. 
+
+Below is the internal workings of the function.
+
+```{r}
+ggplot2::ggplot(mtcars, ggplot2::aes(x = mtcars$wt, y = mtcars$mpg)) +
+		ggplot2::geom_point(ggplot2::aes(size= mtcars$hp), pch = 21) +
+		ggplot2::xlab("weight") +
+		ggplot2::ylab("mpg") +
+		ggplot2::labs(size = "horse power")
+
+```
+
+And again, below this the actual function call.
+
 ```{r}
 coolgraph::sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "weight", "mpg", "horse power")
 
 ```
 
-##More information
-
-See my vignette: 
-
-
-
+As you can see it seems to work more or less as intended. This function is both the simplest function in the package, and the most well behaved. 

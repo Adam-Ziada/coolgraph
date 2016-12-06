@@ -24,13 +24,10 @@ To use this function you must pre-prepare a table or else it won't. The term use
 |   sex    | smoking  | average mutation rate  |
 |----------|----------|------------------------|
 | "male"   | "no"     |        15.5            |
-|----------|----------|------------------------|
 | "male"   | "yes"    |        12.3            |
-|----------|----------|------------------------|
 | "female" | "no"     |        18.8            |
-|----------|----------|------------------------|
 | "female" | "yes"    |        15.6            |
-|----------|----------|------------------------|
+
 
 In this package we use the mtcars data set a lot, and below I'm going to walk through and example of how to use the heatmap function. First we need to fix the mtcars data, as several of the categorical variables are encoded as factors.
 
