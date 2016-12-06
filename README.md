@@ -13,7 +13,9 @@ Download
 
 To download this packages use the following commands.
 
-install.packages("devtools") install\_github(Adam-Ziada/coolgraph)
+install.packages("devtools")
+
+install\_github(Adam-Ziada/coolgraph)
 
 heatmap()
 ---------
