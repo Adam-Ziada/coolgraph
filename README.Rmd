@@ -15,6 +15,7 @@ This package has been inspired by my research group and there desire to make awe
 To download this packages use the following commands.
 
 install.packages("devtools")
+
 install_github(Adam-Ziada/coolgraph)
 
 
