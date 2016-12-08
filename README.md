@@ -103,26 +103,26 @@ facet2D()
 
 This function was inspired by my interested in showing 2 categorical variables in the same set of graphs as 2 continous variables, ploting a grid of faceted plots where each column represents different values of one categorical variable, and each row represents different values of the other categorical variable. Each plot would show one of the continous variables on the x axis, with the other continous variable on the y-axis. However at this moment the function is not working properly. I will go into that below.
 
-### Function Structure
+### Function structure
 
 facet2D(data, c1, c2, f1, f2, xlab = "x-axis", ylab = "y-axis")
 
 -   data is a data frame
--   c1 is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data
--   c2 is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data
+-   c1 is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data. Note that you must put the name of the variable in quotes when entering it into the function.
+-   c2 is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data. Note that you must put the name of the variable in quotes when entering it into the function.
 -   f1 is a column of a data frame of the form 'variable' name, containing factor data. Note that you must put the name of the variable in quotes when entering it into the function.
 -   f2 is a column of a data frame of the form 'variable' name, containing factor data. Note that you must put the name of the variable in quotes when entering it into the function.
 -   xlab is the x-axis label - must be character data.
 -   ylab is the y-axis label - must be character data.
 
-### Trouble shooting
+### Example
 
 In this graph, I want to compare the mpg or miles per gallon a car gets based on it's weight, accross cars with different numbers of cylinders and automatic drive vs manual drive. Below is the guts of what the function does.
 
 ``` r
-b <- ggplot2::ggplot(my_cars, ggplot2::aes(wt, mpg)) +
+b <- ggplot2::ggplot(my_cars, ggplot2::aes_string("wt", "mpg")) +
         ggplot2::geom_point(alpha = 1) +
-        ggplot2::facet_wrap(c(paste("am"), paste("cyl"))) +
+        ggplot2::facet_wrap(c("am", "cyl")) +
         ggplot2::labs(x = "weight") +
         ggplot2::labs(y = "miles per gallon") +
         ggplot2::theme_bw(base_size = 10)
@@ -131,15 +131,25 @@ b
 
 ![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
-Unfortunatly when we make pretty much an identical call to our function, something about the facet\_wrap distorts the data.
+Below we make pretty much an identical call to our function.
+
+``` r
+coolgraph::facet2D(my_cars, "wt", "mpg", "am", "cyl", "weight", "miles per gallon")
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+
+This function appears to be working as expected. Note that you must enter the name of your variables in quotes, "wt", rather than as data*w**t*, *o**r**s**i**m**p**l**y**w**t*.*I**f**y**o**u**e**n**t**e**r**d**a**t**a*variable you will get a result, but it will distort your data.
+
+Example:
 
 ``` r
 coolgraph::facet2D(my_cars, my_cars$wt, my_cars$mpg, "am", "cyl", "weight", "miles per gallon")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
-Note that all tests for this function are currently disabled until it is working properlly. As you can see, it technically facet's the data and plots mpg vs wt, but something seems to be going wrong in that the points are distorted. This function will hopefully be fixed at a future data.
+Note how this still produces a distorted graph but doesn't throw off any errors. We are currently working to fix that bug, however until it is fixed you must enter only the variable name in quotes.
 
 sizescale()
 -----------
@@ -172,7 +182,7 @@ ggplot2::ggplot(mtcars, ggplot2::aes(x = mtcars$wt, y = mtcars$mpg)) +
         ggplot2::labs(size = "horse power")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 And again, below this the actual function call.
 
@@ -180,6 +190,6 @@ And again, below this the actual function call.
 coolgraph::sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "weight", "mpg", "horse power")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 As you can see it seems to work more or less as intended. This function is both the simplest function in the package, and the most well behaved.
