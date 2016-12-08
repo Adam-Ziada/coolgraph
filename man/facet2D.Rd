@@ -9,9 +9,9 @@ facet2D(data, c1, c2, f1, f2, xlab = "x-axis", ylab = "y-axis")
 \arguments{
 \item{data}{is a data frame}
 
-\item{c1}{is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data}
+\item{c1}{is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data. Note that you must put the name of the variable in quotes when entering it into the function.}
 
-\item{c2}{is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data}
+\item{c2}{is a column of a data frame of the form data$variable name, containing int, dbl, or numeric data. Note that you must put the name of the variable in quotes when entering it into the function.}
 
 \item{f1}{is a column of a data frame of the form 'variable' name, containing factor data. Note that you must put the name of the variable in quotes when entering it into the function.}
 
@@ -25,12 +25,14 @@ facet2D(data, c1, c2, f1, f2, xlab = "x-axis", ylab = "y-axis")
 This function was inspired by my interested in showing 2 categorical variables in the same set of graphs as 2 continous variables, ploting a grid of faceted plots where each column represents different values of one categorical variable, and each row represents different values of the other categorical variable. Each plot would show one of the continous variables on the x axis, with the other continous variable on the y-axis. However at this moment the function is not working properly.
 }
 \examples{
-#'my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
-#'   gear = as.factor(mtcars$gear),
-#'   carb = as.factor(mtcars$carb),
-#	  am = as.factor(mtcars$am),
-#' 	vs = as.factor(mtcars$vs))
-#'
-#'facet2D(data = my_cars, my_cars$wt, my_cars$mpg, "am", "cyl", "am", "cylinder")
+my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
+   gear = as.factor(mtcars$gear),
+   carb = as.factor(mtcars$carb),
+   am = as.factor(mtcars$am),
+ 	vs = as.factor(mtcars$vs))
+
+facet2D(data = my_cars, "wt", "mpg", "am", "cyl", "weight", "Miles per gallon")
+facet2D(data = my_cars, "disp", "mpg", "am", "cyl", "Displacement", "Miles per gallon")
+facet2D(data = my_cars, "drat", "mpg", "am", "cyl", "Rear axel ratio", "Miles per gallon")
 }
 

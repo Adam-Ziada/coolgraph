@@ -15,10 +15,10 @@
 #' @export sizescale
 #'
 #' @examples
-#' #'sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "wt", "mpg", "hp")
-#' #'sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "weight", "mpg", "horse power")
-#' #'sizescale(mtcars, mtcars$disp, mtcars$mpg, mtcars$hp, "size", "mpg", "horse power")
-#' #'sizescale(mtcars, mtcars$disp, mtcars$mpg, mtcars$hp)
+#' sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "wt", "mpg", "hp")
+#' sizescale(mtcars, mtcars$wt, mtcars$mpg, mtcars$hp, "weight", "mpg", "horse power")
+#' sizescale(mtcars, mtcars$disp, mtcars$mpg, mtcars$hp, "size", "mpg", "horse power")
+#' sizescale(mtcars, mtcars$disp, mtcars$mpg, mtcars$hp)
 sizescale <- function(data, x1, y1, scale, xlab = "x-axis", ylab = "y-axis", legendlab = "legend") {
 	if(!is.data.frame(data)) {
 		stop('the first variable (data) must be a data frame, you have entered ', class(data)[1], " data.")

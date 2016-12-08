@@ -26,15 +26,15 @@ heatmap(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis",
 To use this function you must pre-prepare a table or else it won't. The term used in this pkg is the "summarized data table", which means for your two catigorical variables, you should have only one row in your table for each combination of catigorical variables, with one y output for each row. For example, if you want to see the effect of sex (male vs female) and smoking status (yes vs no), and you want to measure mutation rate accross 100 samples, you would prepare a table with 3 columns and 4 rows. The last column of the table would contain the average mutation rate for each combination of sex and smoking status.
 }
 \examples{
-#' my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
-#'                                gear = as.factor(mtcars$gear),
-#'                                carb = as.factor(mtcars$carb),
-#'                                    am = as.factor(mtcars$am),
-#'                                    vs = as.factor(mtcars$vs))
-#'   heat_data <- dplyr::ungroup(
-#'          	dplyr::summarise(dplyr::group_by(my_cars, am, cyl),
-#' 									 average_mpg = mean(mpg)))
-#' heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg,
-#'                                      "cylinders", "am", "mpg")
+ my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
+                                gear = as.factor(mtcars$gear),
+                                carb = as.factor(mtcars$carb),
+                                    am = as.factor(mtcars$am),
+                                    vs = as.factor(mtcars$vs))
+   heat_data <- dplyr::ungroup(
+          	dplyr::summarise(dplyr::group_by(my_cars, am, cyl),
+ 									 average_mpg = mean(mpg)))
+ heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg,
+                                      "cylinders", "am", "mpg")
 }
 

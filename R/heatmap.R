@@ -21,16 +21,16 @@
 #' @export heatmap
 #'
 #' @examples
-#' #' my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
-#' #'                                gear = as.factor(mtcars$gear),
-#' #'                                carb = as.factor(mtcars$carb),
-#' #'                                    am = as.factor(mtcars$am),
-#' #'                                    vs = as.factor(mtcars$vs))
-#' #'   heat_data <- dplyr::ungroup(
-#' #'          	dplyr::summarise(dplyr::group_by(my_cars, am, cyl),
-#' #' 									 average_mpg = mean(mpg)))
-#' #' heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg,
-#' #'                                      "cylinders", "am", "mpg")
+#'  my_cars <- dplyr::mutate(mtcars, cyl = as.factor(mtcars$cyl),
+#'                                 gear = as.factor(mtcars$gear),
+#'                                 carb = as.factor(mtcars$carb),
+#'                                     am = as.factor(mtcars$am),
+#'                                     vs = as.factor(mtcars$vs))
+#'    heat_data <- dplyr::ungroup(
+#'           	dplyr::summarise(dplyr::group_by(my_cars, am, cyl),
+#'  									 average_mpg = mean(mpg)))
+#'  heatmap(heat_data, heat_data$cyl, heat_data$am, heat_data$average_mpg,
+#'                                       "cylinders", "am", "mpg")
 heatmap <- function(data, x1, x2, y, xlab = "x-axis", ylab = "y-axis", legendlab = "response\n variable") {
 	if(!is.data.frame(data)) {
 		stop('the first variable (data) must be a data frame, you have entered ', class(data)[1], " data.")
